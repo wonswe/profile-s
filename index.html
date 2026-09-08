@@ -7,12 +7,12 @@
       name="description"
       content="Shared records for Juwon's next chapter."
     />
-    <title>juwon / shared records</title>
+    <title>juwon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;600;700;800&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -25,8 +25,7 @@
       <section class="records" aria-labelledby="recordsTitle">
         <div class="records-top">
           <div>
-            <p class="count" id="recordCount">SHARED RECORDS</p>
-            <h1 id="recordsTitle">memories</h1>
+            <p class="count" id="recordCount">0 notes</p>
           </div>
           <button class="open-form" id="openForm" type="button">
             + LEAVE A NOTE
@@ -49,7 +48,7 @@
         </div>
 
         <label>
-          your name
+          Your name
           <input
             id="name"
             name="name"
@@ -60,7 +59,7 @@
         </label>
 
         <label>
-          how do you know juwon?
+          How do you know Juwon?
           <select id="relationship" name="relationship" required>
             <option value="" selected disabled>select one</option>
             <option>Roast'd Guest</option>
@@ -70,38 +69,38 @@
         </label>
 
         <label>
-          a moment you remember
+          A memory
           <textarea
             id="answerOne"
             name="answerOne"
             rows="4"
             maxlength="700"
             required
-            placeholder="a moment, small habit, or conversation you remember."
+            placeholder="A moment or a conversation you remember"
           ></textarea>
         </label>
 
         <label>
-          what did juwon bring to the café or its community?
+          What did Juwon bring to Roast'd and its commumity?
           <textarea
             id="answerTwo"
             name="answerTwo"
             rows="4"
             maxlength="700"
             required
-            placeholder="anything you noticed or appreciated."
+            placeholder="Anything you noticed or appreciated"
           ></textarea>
         </label>
 
         <label>
-          for a future café team
+          Note for a future employer
           <textarea
             id="answerThree"
             name="answerThree"
             rows="4"
             maxlength="700"
             required
-            placeholder="what would you want them to know about juwon?"
+            placeholder="What would you want them to know about Juwon?"
           ></textarea>
         </label>
 
@@ -125,6 +124,7 @@
       id="welcomeDialog"
       class="welcome-dialog"
       aria-labelledby="welcomeTitle"
+      autofocus
     >
       <section class="welcome-content">
         <p class="eyebrow">NOTE FROM JUWON</p>
@@ -132,13 +132,15 @@
         <p class="welcome-copy">
           The last 3 years at Roast'd have been the happiest years of my life.
           Thank you for creating such a fun and loving community. I feel so
-          blessed to have met you and served your coffee every morning.
+          blessed to have met you and served your coffee every morning. You've
+          done more for me than I could ever give back.
         </p>
         <p class="welcome-copy">
-          I’m moving to Korea to start a new journey. If you would like to
-          share a moment we’ve had, and a little about what you saw in me at
-          Roast'd, I would be incredibly grateful.
+          I’m moving to Korea this fall for a new adventure. If you would like
+          to share a moment we’ve had, and a little about what you saw in me at
+          Roast'd, I would be incredibly grateful. I will miss you so much 🥲
         </p>
+        <p class="welcome-copy">Thank you so much for everything !</p>
         <button id="closeWelcome" class="welcome-enter" type="button">
           ENTER →
         </button>

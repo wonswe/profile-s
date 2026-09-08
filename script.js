@@ -12,15 +12,16 @@ const maxFileBytes = 25 * 1024 * 1024;
 const config = window.SUPABASE_CONFIG || {};
 const publishableKey = config.publishableKey || config.anonKey;
 const isConfigured =
-  /^https:\/\/.+\.supabase\.co$/i.test(config.url || '') && Boolean(publishableKey);
+  /^https:\/\/.+\.supabase\.co$/i.test(config.url || '') &&
+  Boolean(publishableKey);
 const client = isConfigured
   ? window.supabase.createClient(config.url, publishableKey)
   : null;
 
 const questions = [
   ['A MOMENT YOU REMEMBER', 'answer_one'],
-  ['WHAT JUWON BROUGHT TO THE CAFÉ OR ITS COMMUNITY', 'answer_two'],
-  ['FOR A FUTURE CAFÉ TEAM', 'answer_three'],
+  ["WHAT JUWON BROUGHT TO THE ROAST'D OR ITS COMMUNITY", 'answer_two'],
+  ['NOTE FOR A FUTURE EMPLOYER', 'answer_three'],
 ];
 
 function setStatus(message = '', isError = false) {
@@ -44,7 +45,10 @@ function textNode(tag, className, value) {
 }
 
 function postText(post) {
-  return questions.map(([, key]) => post[key]).filter(Boolean).join(' ');
+  return questions
+    .map(([, key]) => post[key])
+    .filter(Boolean)
+    .join(' ');
 }
 
 function isKoreanText(value) {
@@ -58,7 +62,7 @@ function createMeta(post) {
     textNode(
       'span',
       '',
-      `${post.name.toUpperCase()} · ${(post.relationship || 'Shared record').toUpperCase()}`,
+      `[${post.name.toUpperCase()} · ${(post.relationship || 'Shared record').toUpperCase()}]`,
     ),
   );
   meta.append(textNode('time', '', formatDate(post.created_at)));
@@ -103,12 +107,14 @@ function createRecord(post) {
 }
 
 function updateRecordCount(total) {
-  recordCount.textContent = `${total} ${total === 1 ? 'SHARED RECORD' : 'SHARED RECORDS'}`;
+  recordCount.textContent = `${total} ${total === 1 ? 'note' : 'notes'}`;
 }
 
 function renderEmpty() {
   if (recordGrid.children.length) return;
-  recordGrid.append(textNode('p', 'empty', 'The first shared record will appear here.'));
+  recordGrid.append(
+    textNode('p', 'empty', 'The first shared note will appear here.'),
+  );
 }
 
 function closeOnBackdropClick(dialog) {
@@ -131,7 +137,9 @@ function showWelcome() {
 
 async function loadRecords() {
   if (!client) {
-    setStatus('Add the new Supabase connection in config.js to begin collecting records.');
+    setStatus(
+      'Add the new Supabase connection in config.js to begin collecting records.',
+    );
     renderEmpty();
     return;
   }
@@ -177,20 +185,29 @@ async function uploadPhoto(file) {
   }
 
   const extension =
-    file.name.split('.').pop().toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+    file.name
+      .split('.')
+      .pop()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '') || 'jpg';
   const path = `public/${new Date().toISOString().slice(0, 7)}/${crypto.randomUUID()}.${extension}`;
-  const { error } = await client.storage.from('structured-moments').upload(path, file, {
-    cacheControl: '31536000',
-    contentType: file.type,
-    upsert: false,
-  });
+  const { error } = await client.storage
+    .from('structured-moments')
+    .upload(path, file, {
+      cacheControl: '31536000',
+      contentType: file.type,
+      upsert: false,
+    });
   if (error) throw error;
   return path;
 }
 
 openForm.addEventListener('click', () => {
   if (!client) {
-    setStatus('Add the new Supabase connection in config.js before opening the form.', true);
+    setStatus(
+      'Add the new Supabase connection in config.js before opening the form.',
+      true,
+    );
     return;
   }
   postDialog.showModal();
@@ -211,7 +228,8 @@ postForm.addEventListener('submit', async (event) => {
   const answerTwo = postForm.elements.answerTwo.value.trim();
   const answerThree = postForm.elements.answerThree.value.trim();
   const image = postForm.elements.image.files[0];
-  if (!name || !relationship || !answerOne || !answerTwo || !answerThree) return;
+  if (!name || !relationship || !answerOne || !answerTwo || !answerThree)
+    return;
 
   submitPost.disabled = true;
   submitPost.textContent = 'SAVING…';
@@ -247,7 +265,10 @@ postForm.addEventListener('submit', async (event) => {
     postDialog.close();
     setStatus('Your note has been added.');
   } catch (error) {
-    setStatus(error.message || 'The note could not be posted. Please try again.', true);
+    setStatus(
+      error.message || 'The note could not be posted. Please try again.',
+      true,
+    );
   } finally {
     submitPost.disabled = false;
     submitPost.textContent = 'POST YOUR NOTE →';

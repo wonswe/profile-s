@@ -19,7 +19,9 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   background: var(--paper);
-  font: 14px/1.5 'DM Mono', monospace;
+  font:
+    14px/1.5 'DM Mono',
+    monospace;
 }
 
 button,
@@ -47,7 +49,7 @@ main {
 .eyebrow,
 footer {
   margin: 0;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.075em;
 }
 
@@ -75,7 +77,9 @@ p {
 
 h1 {
   margin: 8px 0 0;
-  font: 400 clamp(42px, 8vw, 74px) / 0.94 'Noto Sans', sans-serif;
+  font:
+    400 clamp(42px, 8vw, 74px) / 0.94 'Noto Sans',
+    sans-serif;
   letter-spacing: -0.065em;
 }
 
@@ -160,14 +164,18 @@ h1 {
 
 .answer-question {
   margin: 0;
-  font: 700 11px/1.45 'DM Mono', monospace;
+  font:
+    550 14px/1.45 'DM Mono',
+    monospace;
   letter-spacing: 0.075em;
 }
 
 .answer-copy {
   margin: 10px 0 0;
-  font: 400 clamp(17px, 2.15vw, 27px) / 1.42 'Noto Sans', sans-serif;
-  letter-spacing: -0.035em;
+  font:
+    200 clamp(14px, 1.5vw, 18px) / 1.42 'Noto Sans',
+    sans-serif;
+  letter-spacing: -0.03em;
 }
 
 .record-korean .answer-copy {
@@ -222,7 +230,8 @@ form {
 label {
   display: block;
   margin: 18px 0;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: 0.05em;
 }
 
@@ -245,7 +254,9 @@ textarea {
   outline: none;
   background: transparent;
   color: var(--ink);
-  font: 400 15px/1.45 'Noto Sans', sans-serif;
+  font:
+    400 15px/1.45 'Noto Sans',
+    sans-serif;
 }
 
 select {
@@ -258,7 +269,9 @@ textarea {
 
 input[type='file'] {
   padding: 9px 0;
-  font: 12px/1.4 'DM Mono', monospace;
+  font:
+    12px/1.4 'DM Mono',
+    monospace;
 }
 
 .welcome-dialog {
@@ -281,13 +294,21 @@ input[type='file'] {
 
 .welcome-content h2 {
   margin: 23px 0 24px;
-  font: 400 clamp(25px, 5vw, 34px) / 1.04 'Noto Sans', sans-serif;
+  font:
+    100 clamp(20px, 3vw, 20px) / 1.04 'Noto Sans',
+    sans-serif;
   letter-spacing: -0.055em;
+}
+
+p.eyebrow {
+  font-size: 12px;
 }
 
 .welcome-copy {
   margin: 0 0 20px;
-  font: 400 17px/1.6 'Noto Sans', sans-serif;
+  font:
+    300 17px/1.6 'Noto Sans',
+    sans-serif;
   letter-spacing: -0.025em;
 }
 
@@ -298,7 +319,9 @@ input[type='file'] {
   border: 0;
   background: transparent;
   color: var(--ink);
-  font: 500 13px/1 'DM Mono', monospace;
+  font:
+    500 12px/1 'DM Mono',
+    monospace;
   letter-spacing: 0.075em;
   cursor: pointer;
 }
@@ -366,14 +389,109 @@ footer p {
   }
 
   .welcome-content {
-    padding: 30px 26px;
+    padding: 35px 40px;
   }
 
   .welcome-copy {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   footer {
     padding: 18px 16px;
+  }
+}
+
+.dialog-heading:focus,
+.welcome-dialog:focus {
+  outline: none;
+}
+
+@media (min-width: 700px) {
+  .site-header {
+    padding: 52px 46px 47px;
+  }
+
+  .records {
+    padding: 78px 46px 66px;
+  }
+
+  .records-top {
+    position: relative;
+    display: block;
+    min-height: 164px;
+    margin-bottom: 0;
+  }
+
+  .open-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .count {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 16px;
+  }
+
+  .status {
+    min-height: 0;
+    margin: 0;
+  }
+
+  .status:empty {
+    display: none;
+  }
+}
+
+/* compact notes header */
+.records-top {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 0;
+  margin-bottom: 0;
+  padding: 20px 0;
+}
+
+.open-form {
+  position: static;
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+.count {
+  position: static;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.status {
+  min-height: 0;
+  margin: 0;
+}
+
+.status:empty {
+  display: none;
+}
+
+/* Desktop: header 아래의 큰 빈 공간 제거 */
+@media (min-width: 700px) {
+  .records {
+    padding: 28px 46px 66px;
+  }
+}
+
+/* Mobile: count와 버튼을 세로로 쌓지 않음 */
+@media (max-width: 699px) {
+  .records-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
   }
 }
