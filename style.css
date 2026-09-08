@@ -255,7 +255,7 @@ textarea {
   background: transparent;
   color: var(--ink);
   font:
-    400 15px/1.45 'Noto Sans',
+    400 16px/1.45 'Noto Sans',
     sans-serif;
 }
 
@@ -493,5 +493,32 @@ footer p {
     flex-direction: row;
     align-items: center;
     gap: 12px;
+  }
+}
+
+/* Desktop: 긴 글 옆에서도 사진을 왼쪽 영역 가운데에 배치 */
+@media (min-width: 700px) {
+  .record {
+    grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+  }
+
+  .record-media {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 340px;
+    max-height: 560px;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+/* Desktop: 폼을 화면 높이 가까이까지 확장 */
+@media (min-width: 700px) {
+  #postDialog {
+    max-height: calc(100dvh - 40px);
+    overflow-y: auto;
   }
 }

@@ -20,7 +20,7 @@ const client = isConfigured
 
 const questions = [
   ['A MOMENT YOU REMEMBER', 'answer_one'],
-  ["WHAT JUWON BROUGHT TO THE ROAST'D OR ITS COMMUNITY", 'answer_two'],
+  ["WHAT JUWON BROUGHT TO ROAST'D OR ITS COMMUNITY", 'answer_two'],
   ['NOTE FOR A FUTURE EMPLOYER', 'answer_three'],
 ];
 
