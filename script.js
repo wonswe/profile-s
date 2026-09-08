@@ -223,6 +223,7 @@ postForm.addEventListener('submit', async (event) => {
   if (!client) return;
 
   const name = postForm.elements.name.value.trim();
+  const email = postForm.elements.email.value.trim().toLowerCase();
   const relationship = postForm.elements.relationship.value;
   const answerOne = postForm.elements.answerOne.value.trim();
   const answerTwo = postForm.elements.answerTwo.value.trim();
@@ -252,6 +253,16 @@ postForm.addEventListener('submit', async (event) => {
       .single();
 
     if (error) throw error;
+    if (email) {
+      const { error: contactError } = await client
+        .from('structured_guestbook_contacts')
+        .insert({
+          post_id: data.id,
+          email,
+        });
+
+      if (contactError) throw contactError;
+    }
     if (data.media_path) {
       data.media_url = client.storage
         .from('structured-moments')
